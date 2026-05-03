@@ -36,7 +36,7 @@ class ActivityController extends Controller
         $totalActivities = Activity::count(); 
         $completedCount = 0;
 
-        if (auth()->check() && str_contains(strtolower(auth()->user()->role->name), 'student')) {
+        if (auth()->check() && auth()->user()->role && str_contains(strtolower(auth()->user()->role->name), 'student')) {
             $completedCount = auth()->user()->rsvpdActivities()->wherePivot('status', 'Completed')->count();
         }
 
