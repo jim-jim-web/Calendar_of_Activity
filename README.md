@@ -3,7 +3,7 @@ Calendar of Activity is a Laravel-based web application designed to streamline t
 
 # List of Implemented Features
 ##### 1. Authentication & Role Management #####
-* Secure User Authentication: Integrated login, registration, and password management using Laravel Breeze.
+* ## Secure User Authentication: ## Integrated login, registration, and password management using Laravel Breeze.
 * Multi-Role Architecture: Defined roles for PIO (Public Information Officers) and Students, each with specific permissions.
 * Role-Based Access Control (RBAC): Custom middleware to protect administrative routes and ensure data integrity.
 2. Activity Management (CRUD)
