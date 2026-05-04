@@ -1,3 +1,2 @@
 # Calendar of Activity
-
-#### is a Laravel-based web application designed to streamline the management and tracking of institutional or community activities. The system serves as a centralized hub where administrators (PIOs) can schedule and organize events, while users (Students) can view and track their participation. It features a robust role-based access control system, ensuring that only authorized personnel can modify activity data, while providing an intuitive visual interface for all users.
+is a Laravel-based web application designed to streamline the management and tracking of institutional or community activities. The system serves as a centralized hub where administrators (PIOs) can schedule and organize events, while users (Students) can view and track their participation. It features a robust role-based access control system, ensuring that only authorized personnel can modify activity data, while providing an intuitive visual interface for all users.
