@@ -22,3 +22,7 @@ Calendar of Activity is a Laravel-based web application designed to streamline t
 * Eloquent Relationships: Advanced use of one-to-many (Activity-Category) and many-to-many (Activity-User) relationships.
 * Database Migrations: Structured database schema with automated migrations and seeders.
 * Middleware Protection: Enhanced security through custom role-checking middleware.
+
+# Entity Relationships Diagram (ERD)
+<img width="741" height="931" alt="erd drawio (1)" src="https://github.com/user-attachments/assets/5ecbe509-646b-42d9-a7d5-cefd19557693" />
+
