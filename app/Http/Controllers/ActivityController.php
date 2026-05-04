@@ -24,7 +24,19 @@ class ActivityController extends Controller
             $query->where('category_id', $request->category_id);
         }
 
-        // 4. Get the final filtered list of activities
+        // 4. Apply date filter (Today / Upcoming / Completed)
+        $filter = $request->input('filter');
+        $now = now();
+
+        if ($filter === 'today') {
+            $query->whereDate('activity_date', $now->toDateString());
+        } elseif ($filter === 'upcoming') {
+            $query->where('activity_date', '>', $now);
+        } elseif ($filter === 'completed') {
+            $query->where('activity_date', '<', $now);
+        }
+
+        // 5. Get the final filtered list of activities
         $activities = $query->get();
 
         // 5. Get all categories so we can populate the dropdown menu

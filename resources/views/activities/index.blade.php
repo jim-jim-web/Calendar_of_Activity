@@ -43,11 +43,16 @@
                 </div>
                 
                 <input type="hidden" name="search" value="{{ request('search') }}">
+                <input type="hidden" name="filter" value="{{ request('filter') }}">
 
                 <div class="flex gap-2 w-full md:w-auto overflow-x-auto px-2 pb-2 md:pb-0 md:px-0">
-                    <a href="{{ route('activities.index', ['filter' => 'today']) }}" class="px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap {{ request('filter') === 'today' ? 'bg-blue-100 text-blue-700' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition' }}">Today</a>
-                    <a href="{{ route('activities.index', ['filter' => 'upcoming']) }}" class="px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap {{ request('filter') === 'upcoming' ? 'bg-blue-100 text-blue-700' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition' }}">Upcoming</a>
-                    <a href="{{ route('activities.index', ['filter' => 'completed']) }}" class="px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap {{ request('filter') === 'completed' ? 'bg-blue-100 text-blue-700' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition' }}">Completed</a>
+                    @php
+                        $baseParams = array_filter(['category_id' => request('category_id'), 'search' => request('search')]);
+                    @endphp
+                    <a href="{{ route('activities.index', $baseParams) }}" class="px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap {{ !request('filter') ? 'bg-blue-100 text-blue-700' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition' }}">All</a>
+                    <a href="{{ route('activities.index', array_merge($baseParams, ['filter' => 'today'])) }}" class="px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap {{ request('filter') === 'today' ? 'bg-blue-100 text-blue-700' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition' }}">Today</a>
+                    <a href="{{ route('activities.index', array_merge($baseParams, ['filter' => 'upcoming'])) }}" class="px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap {{ request('filter') === 'upcoming' ? 'bg-blue-100 text-blue-700' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition' }}">Upcoming</a>
+                    <a href="{{ route('activities.index', array_merge($baseParams, ['filter' => 'completed'])) }}" class="px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap {{ request('filter') === 'completed' ? 'bg-blue-100 text-blue-700' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition' }}">Completed</a>
                 </div>
             </form>
 
@@ -89,6 +94,9 @@
                                     elseif(str_contains($catName, 'lecture')) $catColor = 'bg-blue-50 text-blue-500';
                                     elseif(str_contains($catName, 'lab')) $catColor = 'bg-green-50 text-green-500';
                                     elseif(str_contains($catName, 'assignment')) $catColor = 'bg-yellow-100 text-yellow-700';
+                                    elseif(str_contains($catName, 'quiz')) $catColor = 'bg-purple-50 text-purple-600';
+                                    elseif(str_contains($catName, 'activity')) $catColor = 'bg-teal-50 text-teal-600';
+                                    elseif(str_contains($catName, 'project')) $catColor = 'bg-orange-50 text-orange-600';
                                 @endphp
                                 <span class="px-3 py-1 text-[11px] font-bold tracking-wide rounded-full {{ $catColor }}">
                                     {{ $activity->category->name }}

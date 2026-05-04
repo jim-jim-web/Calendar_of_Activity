@@ -18,9 +18,12 @@ class DatabaseSeeder extends Seeder
 
         // 2. Create Categories
         Category::create(['name' => 'Exam']);
-        Category::create(['name' => 'Project Deadline']);
+        Category::create(['name' => 'Project']);
         Category::create(['name' => 'Class Meeting']);
         Category::create(['name' => 'School Event']);
+        Category::create(['name' => 'Quiz']);
+        Category::create(['name' => 'Activity']);
+        Category::create(['name' => 'Assignment']);
 
         // 3. Create a default PIO User
         User::create([
